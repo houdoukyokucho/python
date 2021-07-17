@@ -1,11 +1,11 @@
 version: '3'
 services:
- web:
+ python:
    build: .
    tty: true
    working_dir: /code
    ports:
-     - 8888:8888
+     - 8000:8000
    volumes:
      - .:/code
    depends_on:
@@ -14,11 +14,11 @@ services:
    image: mysql:5.7
    restart: always
    environment:
-     MYSQL_DATABASE: python_database
-     MYSQL_USER: root
-     MYSQL_PASSWORD: password
-     MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    MYSQL_DATABASE: mysql_database
+    MYSQL_USER: mysql_user
+    MYSQL_PASSWORD: user_password
+    MYSQL_ROOT_PASSWORD: root_password
    volumes:
      - ./mysql:/var/lib/mysql
    ports:
-     - 33307:3306
+     - 3306:3306
